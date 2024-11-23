@@ -15,7 +15,6 @@
   font-style: italic;
 }
 
-/* Загальні стилі для тексту */
 .defaultError p,
 .notFound p,
 .networkError p,
@@ -24,16 +23,12 @@
   padding: 0;
 }
 
-/* Стилі для різних типів помилок */
-
-/* За замовчуванням (невідома помилка) */
 .defaultError {
   background-color: #f0f0f0;
   color: #333;
   border: 2px solid #ccc;
 }
 
-/* Помилка "не знайдено" */
 .notFound {
   background-color: #cbf784;
   color: rgb(55, 14, 71);
@@ -41,14 +36,12 @@
   border-radius: 25px;
 }
 
-/* Помилка мережі */
 .networkError {
   background-color: #d9f7ff;
   color: #007acc;
   border: 2px solid #007acc;
 }
 
-/* Помилка сервера */
 .serverError {
   background-color: #ffe6e6;
   color: #cc0000;

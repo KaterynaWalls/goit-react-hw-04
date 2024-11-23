@@ -47,7 +47,7 @@ const App = () => {
 
         const imagesWithId = newImages.map((image) => ({
           ...image,
-          id: nanoid(),
+          id: `${image.id}-${nanoid()}`,
         }));
 
         setTotalPages(totalPages);
@@ -94,7 +94,9 @@ const App = () => {
   };
 
   const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
+    if (page < totalPages) {
+      setPage((prevPage) => prevPage + 1);
+    }
   };
 
   const renderContent = () => {
