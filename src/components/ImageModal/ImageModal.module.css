@@ -9,9 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Початковий стан */
-  transform: scale(0.95); /* Початковий стан */
-  animation: fadeIn 0.5s ease-out forwards; /* Анімація появи */
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.overlay.fadeOut {
+  animation: fadeOut 0.7s ease-out forwards;
 }
 
 .modal {
@@ -26,9 +30,13 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  opacity: 0; /* Початковий стан */
-  transform: translateY(-20px); /* Початковий стан */
-  animation: slideIn 0.5s ease-out forwards; /* Анімація появи */
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.modal.fadeOut {
+  animation: slideOut 0.7s ease-out forwards;
 }
 
 .image {
@@ -37,6 +45,7 @@
   object-fit: contain;
   display: block;
   margin: auto;
+  cursor: pointer; /* Вказує, що зображення клікабельне */
 }
 
 /* Анімація для overlay */
@@ -51,7 +60,7 @@
   }
 }
 
-/* Анімація для modal */
+/* Анімація для modal появи */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -60,5 +69,29 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Анімація для fadeOut overlay */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Анімація для modal закриття */
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }

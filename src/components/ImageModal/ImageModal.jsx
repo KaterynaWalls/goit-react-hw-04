@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import s from "./ImageModal.module.css";
@@ -6,6 +6,16 @@ import s from "./ImageModal.module.css";
 Modal.setAppElement("#root");
 
 const ImageModal = ({ isModalOpen, closeModal, largeImageUrl, altText }) => {
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  const closeWithAnimation = () => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setIsFadingOut(false);
+      closeModal();
+    }, 500); // Тривалість анімації 0.5s
+  };
+
   if (!largeImageUrl) {
     console.error("Large image URL is missing!");
     return null;
@@ -14,16 +24,19 @@ const ImageModal = ({ isModalOpen, closeModal, largeImageUrl, altText }) => {
   return (
     <Modal
       isOpen={isModalOpen}
-      onRequestClose={closeModal}
-      overlayClassName={s.overlay}
-      className={s.modal}
+      onRequestClose={closeWithAnimation}
+      overlayClassName={`${s.overlay} ${isFadingOut ? s.fadeOut : ""}`}
+      className={`${s.modal} ${isFadingOut ? s.fadeOut : ""}`}
     >
-      <div>
+      <div onClick={closeWithAnimation}>
         <img
           src={largeImageUrl}
           alt={altText || "Image"}
           className={s.image}
-          onClick={closeModal}
+          onClick={(e) => {
+            e.stopPropagation(); // Щоб уникнути подвійного закриття
+            closeWithAnimation();
+          }}
         />
       </div>
     </Modal>

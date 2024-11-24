@@ -47,10 +47,11 @@ const App = () => {
 
         const imagesWithId = newImages.map((image) => ({
           ...image,
-          id: `${image.id}-${nanoid()}`,
+          id: `${image.id}-${page}-${nanoid()}`,
         }));
 
         setTotalPages(totalPages);
+
         setImages((prevImages) => [...prevImages, ...imagesWithId]);
       } catch (error) {
         console.error(error);
@@ -69,6 +70,15 @@ const App = () => {
 
     getImage();
   }, [query, page]);
+
+  useEffect(() => {
+    if (page > 1) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [images]);
 
   const handleSearch = (searchQuery) => {
     if (searchQuery.trim() === "") {

@@ -1,18 +1,21 @@
-/* Загальні стилі для контейнера помилок */
 .defaultError,
 .notFound,
 .networkError,
 .serverError {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   padding: 20px;
   border-radius: 8px;
   margin: 20px auto;
-  width: 80%;
+  width: 50%;
   max-width: 500px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;
+  border-radius: 90px 0px 90px 30px;
+  background-color: #cbf784;
+  color: rgb(55, 14, 71);
 }
 
 .defaultError p,
@@ -23,27 +26,7 @@
   padding: 0;
 }
 
-.defaultError {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 2px solid #ccc;
-}
-
-.notFound {
-  background-color: #cbf784;
-  color: rgb(55, 14, 71);
-  border: none;
-  border-radius: 25px;
-}
-
-.networkError {
-  background-color: #d9f7ff;
-  color: #007acc;
-  border: 2px solid #007acc;
-}
-
 .serverError {
-  background-color: #ffe6e6;
-  color: #cc0000;
-  border: 2px solid #cc0000;
+  background-color: #c95959;
+  color: #df9d9d;
 }
